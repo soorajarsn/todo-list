@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title></title>
+    <link href="https://fonts.googleapis.com/css?family=Lakki+Reddy|Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+  <style media="screen">
+    @media only screen and (max-width:590px) {
+      .wrap-it {
+        flex-wrap: wrap;
+      }
+    }
+  </style>
+</head>
+
+<body>
+ 
+  <% if(!user) { %>
+    <div class="bounce-in-top" style="text-align:center; font-family:'Lakki Reddy',cursive;font-size:1.2rem;padding-top:25px;color:#464159;">
+        <h1>Wanna Manage your tasks???</h1>
+        <h1>So here it is!!!</h1>
+      </div>
+  <div class="container">
+      <div class="signin">
+        <div class="signing-box rotate-in-2-fwd-cw fade-in">
+          <h1 class='text-focus-in'>Have an account?</h1>
+          <a href="/signin"><button type="button" class='btn bounce-top' name="button" style="margin-top:150px;font-size:1.2rem;">Sign in</button></a>
+        </div>
+      </div>
+      <div class="signup">
+        <div class="signing-box rotate-in-2-fwd-ccw fade-in">
+          <h1 class='text-focus-in'>Don't have account?</h1>
+          <a href="/signup"><button class='btn bounce-top' type="button" name="button" style="margin-top:150px;font-size:1.2rem;">Sign up</button></a>
+        </div>
+      </div>
+   
+  </div>
+  <%}%>
+      <% if(user) { %>
+  <div>
+    <h1 class='text-focus-in' style='animation-duration:.5s;'>Hello <%= user %></h1>
+    <div class='profile'>
+      <% if (user) { %>
+      <% if(list) { %>
+      <% for(var i=0;i<list.length;i++){ %>
+      <div class='show-todo'>
+        <div class='hidden' id=<%= list[i].item.split(' ').join('') %> style='width:100%;'>
+          <form action=<%= '/edit/'+list[i].id %> method='post'>
+            <input class=<%= list[i].item.split(' ').join('') %> name='item' required autofocus>
+            <button type='submit' class='btn' style='font-size:1.2rem;font-weight:bold;'>Save</button>
+          </form>
+        </div>
+        <div id=<%= list[i].id%> class='todo-tab-container'>
+          <div class='todo-tab slide-in-elliptic-top-fwd' id=<%=list[i].done %>>
+            <%= list[i].item %>
+            <div class="" style='display:flex;justify-content:flex-end;'>
+
+              <button class='edit' id=<%= list[i].id %>> <img src="https://image.flaticon.com/icons/png/512/148/148926.png" alt="Edit" style="width:16px;height:16px;"> </button>
+              <form action=<%='/delete/'+list[i].id %> method='post'>
+                <button class='delete' type='submit'><img src="https://image.flaticon.com/icons/png/512/1215/1215092.png" alt="Delete" style='width:16px;height:16px;'> </button>
+              </form>
+              <form class="" action=<%='/done/'+list[i].id %> method="post">
+                <button class='done'><img src="https://image.flaticon.com/icons/png/512/190/190411.png" alt="Done" style='width:16px;height:16px;'> </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% } %>
+      <% } %>
+
+      <% if(!list.length) {%>
+      <div class='empty-todo'>Currently you don't have any task to do :D</div>
+      <% } %>
+
+
+
+
+      <div class='add-todo-container'>
+        <div class='hidden add-form'>
+          <form method='post' class='todo-add-form' action='/add'>
+            <input type='text' name='item' required autofocus>
+            <button type="submit" class='btn' style="width:20%;">Add</button>
+          </form>
+        </div>
+        <div class='wrap-it' style="display:flex;justify-content:space-between;margin:10px 0;width:100%;padding:10px;">
+          <div type='button' id='add-form' class='add-button bounce-top btn' style="font-size:1.2rem;font-weight:bold;">
+            Add new <img src="https://image.flaticon.com/icons/png/512/1828/1828574.png" alt="" style='width:24px;height:24px;'>
+          </div>
+          <a href="/logout"class='bounce-top' style="font-size:1.2rem;font-weight:bold;">
+            <div type='button' id='add-form' class='btn' style="padding:15px 3px;">
+              Log out
+            </div>
+          </a>
+        </div>
+        <% } %>
+      </div>
+    </div>
+  <% } %>
+  </div>
+     <div style="background:rgb(186, 124, 32);width:100%;text-align:center;margin:10px 0 0 0;padding:10px 0;">
+    <a href="https://www.facebook.com/sooraj.shukla.395"> <i class="footer-icon fab fa-facebook-square"></i></a>
+    <a href="https://www.instagram.com/soorajshukla974"> <i class="footer-icon fab fa-instagram"></i></a>
+    <a href="https://www.linkedin.com/in/sooraj-shukla-1330a5195/"><i class="footer-icon fab fa-linkedin"></i></a><br>
+    <p style="color:#ebe6e6;margin-top:0;display:inline;">&copy,2019<pre style='display:inline;color:white;'> Author:Sooraj Shukla</pre></p>
+  </div>
+  <script src="https://kit.fontawesome.com/5d390a7d82.js" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src='../assets/index.js'></script>
+</body>
+
+</html>

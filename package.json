@@ -1,0 +1,38 @@
+{
+    "name": "todo",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test1": "mocha task1.spec.js",
+        "test2": "mocha task2.spec.js",
+        "test3": "mocha task3.spec.js",
+        "test4": "mocha task4.spec.js",
+        "test5": "mocha task5.spec.js",
+        "test6": "mocha task6.spec.js",
+        "test7": "mocha task7.spec.js",
+        "test8": "mocha task8.spec.js",
+        "test9": "mocha task9.spec.js",
+        "app": "node app.js & lt --host http://localtunnel.konfinity.com -p 4000"
+    },
+    "author": "github.com/annubv",
+    "license": "ISC",
+    "dependencies": {
+        "assert": "^2.0.0",
+        "jsonwebtoken": "^8.5.1",
+        "chai": "^4.2.0",
+        "body-parser": "^1.19.0",
+        "compression": "^1.7.4",
+        "cors": "^2.8.5",
+        "ejs": "^2.6.2",
+        "express": "^4.17.1",
+        "express-session": "^1.16.2",
+        "localtunnel": "^1.9.2",
+        "morgan": "^1.9.1",
+        "sequelize": "^5.9.0",
+        "sqlite3": "^4.0.9",
+        "supertest": "^4.0.2",
+        "jsdom": "^15.1.1",
+        "wget-improved": "^3.0.2"
+    }
+}
